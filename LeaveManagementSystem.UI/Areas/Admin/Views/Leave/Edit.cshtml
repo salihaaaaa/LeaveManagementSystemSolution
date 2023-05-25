@@ -1,0 +1,72 @@
+﻿@model LeaveUpdateRequest
+
+@{
+    ViewBag.Title = "Update Leave";
+    ViewBag.CurrentUrl = "~/Leave/Edit";
+}
+
+<div class="container w-75">
+
+    <h4 class="pt-3">Update Leave</h4>
+    <hr />
+
+    <form asp-controller="Leave" asp-action="Edit" asp-route-ReturnUrl="@Context.Request.Query["ReturnUrl"]" method="post" class="row g-3">
+
+        <input type="hidden" asp-for="LeaveID" />
+
+        @*Name*@
+        <div class="col-md-12">
+            <label asp-for="UserID" class="form-label">Name</label>
+            <select asp-for="UserID" asp-items="@ViewBag.Users" class="form-select">
+                <option value="">Please select</option>
+            </select>
+            <span asp-validation-for="UserID" class="form-text text-danger"></span>
+        </div>
+
+        @*Leave Type*@
+        <div class="col-md-12">
+            <label asp-for="LeaveTypeID" class="form-label">Leave Type</label>
+            <select asp-for="LeaveTypeID" asp-items="@ViewBag.LeaveTypes" class="form-select">
+                <option value="">Please select</option>
+            </select>
+            <span asp-validation-for="LeaveTypeID" class="form-text text-danger"></span>
+        </div>
+
+        @*Start Date*@
+        <div class="col-md-6">
+            <label asp-for="StartDate" class="form-label">Start Date</label>
+            <input asp-for="StartDate" class="form-control">
+            <span asp-validation-for="StartDate" class="form-text text-danger"></span>
+        </div>
+
+        @*End Date*@
+        <div class="col-md-6">
+            <label asp-for="EndDate" class="form-label">End Date</label>
+            <input asp-for="EndDate" class="form-control">
+            <span asp-validation-for="EndDate" class="form-text text-danger"></span>
+        </div>
+
+        @*Reason*@
+        <div class="col-md-12">
+            <label asp-for="Reason" class="form-label">Reason</label>
+            <input asp-for="Reason" class="form-control">
+            <span asp-validation-for="Reason" class="form-text text-danger"></span>
+        </div>
+
+        @*Status*@
+        <div class="col-md-12">
+            <label asp-for="Status" class="form-label">Status</label>
+            <select asp-for="Status" asp-items="@ViewBag.Statuses" class="form-select">
+                <option value="">Please select</option>
+            </select>
+            <span asp-validation-for="Status" class="form-text text-danger"></span>
+        </div>
+
+        @*Update button*@
+        <div class="col-12">
+            <button type="submit" class="btn btn-danger mb-3">Update</button>
+        </div>
+    </form>
+</div>
+
+

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ApplicationUser>
+
+@{
+    ViewBag.Title = "Users";
+    ViewBag.CurrentUrl = "~/User/Index";
+}
+
+<div class="container">
+
+    <h3 class="pt-3">All Employee</h3>
+    <a asp-controller="Account" asp-action="Register" class="btn btn-danger mt-3">Add new employee</a>
+    <hr />
+    <table class="table table-bordered table-responsive mt-2">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ApplicationUser user in Model)
+            {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                    <td>@user.PhoneNumber</td>
+                    <td>
+                        <a asp-controller="Account" asp-action="Edit" asp-route-Id="@user.Id">Edit</a>
+                        <a asp-controller="Account" asp-action="Edit" asp-route-Id="@user.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+

@@ -1,0 +1,29 @@
+﻿@model LeaveTypeResponse
+
+@{
+    ViewBag.Title = "Delete Leave Type";
+    ViewBag.CurrentUrl = "~/LeaveType/Delete";
+}
+
+<div class="container w-75">
+
+    <h4 class="pt-3">Edit Leave Type</h4>
+    <h5 class="pt-3">Are you sure to delete?</h5>
+    <hr />
+
+    <form asp-controller="LeaveType" asp-action="Delete" asp-route-ReturnUrl="@Context.Request.Query["ReturnUrl"]" method="post">
+
+        <input type="hidden" asp-for="LeaveTypeID" />
+
+        @*Leave Type Name*@
+        <div class="mb-3">
+            <label asp-for="LeaveTypeName" class="form-label">Leave Type</label>
+            <input asp-for="LeaveTypeName" class="form-control" disabled>
+        </div>
+
+        @*Delete button*@
+        <button type="submit" class="btn btn-danger mt-2">Delete</button>
+
+    </form>
+</div>
+

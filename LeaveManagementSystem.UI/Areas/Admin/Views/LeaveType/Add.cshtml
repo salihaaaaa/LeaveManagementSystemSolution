@@ -1,0 +1,30 @@
+﻿@model LeaveTypeAddRequest
+
+@{
+    ViewBag.Title = "Add Leave Type";
+    ViewBag.CurrentUrl = "~/LeaveType/Add";
+}
+
+<div class="container w-75">
+
+    <h4 class="pt-3">Add Leave Type</h4>
+    <hr />
+
+    <form asp-controller="LeaveType" asp-action="Add" asp-route-ReturnUrl="@Context.Request.Query["ReturnUrl"]" method="post">
+
+        @*Leave Type Name*@
+        <div class="mb-3">
+            <label asp-for="LeaveTypeName" class="form-label">Leave Type</label>
+            <input asp-for="LeaveTypeName" class="form-control">
+            <span asp-validation-for="LeaveTypeName" class="form-text text-danger"></span>
+        </div>
+
+        @*Add button*@
+        <button type="submit" class="btn btn-danger mt-2">Add</button>
+
+        <div asp-validation-summary="All" class="form-text text-danger">
+        </div>
+    </form>
+</div>
+
+

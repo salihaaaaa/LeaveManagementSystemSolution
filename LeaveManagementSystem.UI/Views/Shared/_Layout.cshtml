@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/LeaveManagementSystem.UI.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-danger border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand">Leave Management System</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flexaccept-policy">
+                    <ul class="navbar-nav flex-grow-1 justify-content-end">
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a asp-controller="Home" asp-action="Index" asp-area="Admin" class="nav-link text-white">Home</a>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Add new
+                                    </a>
+                                    <ul class="dropdown-menu bg-danger">
+                                        <li><a asp-controller="Account" asp-action="Register" class="nav-link text-white" asp-area="Admin">User</a></li>
+                                        <li><a asp-controller="LeaveType" asp-action="Add" class="nav-link text-white" asp-area="Admin">Leave Type</a></li>
+                                        <li><a asp-controller="Leave" asp-action="Add" class="nav-link text-white" asp-area="Admin">Leave</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Reports
+                                    </a>
+                                    <ul class="dropdown-menu bg-danger">
+                                        <li><a asp-controller="User" asp-action="Index" class="nav-link text-white" asp-area="Admin">User</a></li>
+                                        <li><a asp-controller="LeaveType" asp-action="Index" class="nav-link text-white" asp-area="Admin">Leave Type</a></li>
+                                        <li><a asp-controller="Leave" asp-action="Index" class="nav-link text-white" asp-area="Admin">Leave</a></li>
+                                    </ul>
+                                </li>
+                            }
+                            else if (User.IsInRole("Employee"))
+                            {
+                                <li class="nav-item">
+                                    <a asp-controller="Home" asp-action="Index" asp-area="" class="nav-link text-white">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="Leave" asp-action="Index" class="nav-link text-white" asp-area="">All Leave</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="Leave" asp-action="Add" class="nav-link text-white" asp-area="">Request new leave</a>
+                                </li>
+                            }
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white text-decoration-none">@User.Identity?.Name</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Account" asp-action="Logout" class="nav-link text-white" asp-area="">Logout</a>
+                            </li>
+                        }
+                        else
+                        {
+                            @if (ViewBag.CurrentUrl == "~/Account/Register")
+                            {
+                                <li class="nav-link">
+                                    <a asp-controller="account" asp-action="register" class="nav-link text-white">Register</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-link">
+                                    <a asp-controller="account" asp-action="register" class="nav-link text-white">Register</a>
+                                </li>
+                            }
+
+                            @if (ViewBag.CurrentUrl == "~/Account/Login")
+                            {
+                                <li class="nav-link">
+                                    <a asp-controller="account" asp-action="login" class="nav-link text-white">Login</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-link">
+                                    <a asp-controller="account" asp-action="login" class="nav-link text-white">Login</a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - LeaveManagementSystem.UI - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

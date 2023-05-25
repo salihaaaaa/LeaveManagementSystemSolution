@@ -1,0 +1,22 @@
+[
+  {
+    "LeaveTypeID": "9BDFE5C1-FD15-4C47-B294-CD6E66CC4D06",
+    "LeaveTypeName": "Sick leave"
+  },
+  {
+    "LeaveTypeID": "A5415B00-3248-4D5B-8E41-02C6B1F21303",
+    "LeaveTypeName": "Annual leave"
+  },
+  {
+    "LeaveTypeID": "BA1AB040-825B-4F5D-BC53-49ED2075C1F8",
+    "LeaveTypeName": "Maternity / Paternity"
+  },
+  {
+    "LeaveTypeID": "35DD578A-33EF-4B6F-8AFC-F289445DA9B5",
+    "LeaveTypeName": "Vacation"
+  },
+  {
+    "LeaveTypeID": "A1ABAC03-5946-49B0-963C-D8A2C7392E1F",
+    "LeaveTypeName": "Sabbatical"
+  }
+]

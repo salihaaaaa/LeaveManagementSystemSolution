@@ -1,0 +1,35 @@
+﻿@model IEnumerable<LeaveTypeResponse>
+
+@{
+    ViewBag.Title = "Leave Type";
+    ViewBag.CurrentUrl = "~/LeaveType/Index";
+}
+
+<div class="container">
+
+    <h3 class="pt-3">All Leave Type</h3>
+    <a asp-controller="LeaveType" asp-action="Add" class="btn btn-danger mt-3">Add new leave type</a>
+    <hr />
+
+    <table class="table table-bordered table-responsive mt-2">
+        <thead>
+            <tr>
+                <th>Leave Type</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (LeaveTypeResponse leaveType in Model)
+            {
+                <tr>
+                    <td>@leaveType.LeaveTypeName</td>
+                    <td>
+                        <a asp-controller="LeaveType" asp-action="Edit" asp-route-leaveTypeID="@leaveType.LeaveTypeID">Edit</a>
+                        <a asp-controller="LeaveType" asp-action="Delete" asp-route-leaveTypeID="@leaveType.LeaveTypeID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

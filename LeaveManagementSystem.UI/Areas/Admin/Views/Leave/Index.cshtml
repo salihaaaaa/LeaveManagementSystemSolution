@@ -1,0 +1,56 @@
+﻿@model IEnumerable<LeaveResponse>
+
+@{
+    ViewBag.Title = "Leave";
+    ViewBag.CurrentUrl = "~/Leave/Index";
+}
+
+<div class="container">
+
+    <h3 class="pt-3">All Leave</h3>
+    <a asp-controller="Leave" asp-action="Add" class="btn btn-danger mt-3">Add new leave</a>
+    <hr />
+
+    <table class="table table-bordered table-responsive mt-2">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Leave Type</th>
+                <th>Date</th>
+                <th>Days</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (LeaveResponse leave in Model)
+            {
+                <tr>
+                    <td>@leave.Name</td>
+                    <td>@leave.LeaveType</td>
+                    <td>@leave.StartDate - @leave.EndDate</td>
+                    <td>@leave.Days</td>
+                    <td>
+                        @if (leave.Status == StatusOptions.Approved.ToString())
+                        {
+                            <button class="btn btn-sm btn-success">Approved</button>
+                        }
+                        else if (leave.Status == StatusOptions.Rejected.ToString())
+                        {
+                            <button class="btn btn-sm btn-danger">Rejected</button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-sm btn-warning">Pending</button>
+                        }
+                    </td>
+                    <td>
+                        <a asp-controller="Leave" asp-action="Edit" asp-route-leaveID="@leave.LeaveID">Edit</a>
+                        <a asp-controller="Leave" asp-action="Delete" asp-route-leaveID="@leave.LeaveID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
