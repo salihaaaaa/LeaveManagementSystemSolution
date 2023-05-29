@@ -34,9 +34,10 @@ namespace LeaveManagementSystem.UI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
-        { 
-            return View();
+        public async Task<IActionResult> Index()
+        {
+            var leaves = await _leavesGetterService.GetAllLeaves();
+            return View(leaves);
         }
 
         [HttpGet]

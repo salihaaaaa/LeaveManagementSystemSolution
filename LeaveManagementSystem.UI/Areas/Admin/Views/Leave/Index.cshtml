@@ -28,7 +28,7 @@
                 <tr>
                     <td>@leave.Name</td>
                     <td>@leave.LeaveType</td>
-                    <td>@leave.StartDate - @leave.EndDate</td>
+                    <td>@leave.StartDate?.ToString("d/M/yyyy") - @leave.EndDate?.ToString("d/M/yyyy")</td>
                     <td>@leave.Days</td>
                     <td>
                         @if (leave.Status == StatusOptions.Approved.ToString())

@@ -19,6 +19,7 @@
                 <th>Date</th>
                 <th>Days</th>
                 <th>Status</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -27,7 +28,7 @@
                 <tr>
                     <td>@leave.Name</td>
                     <td>@leave.LeaveType</td>
-                    <td>@leave.StartDate - @leave.EndDate</td>
+                    <td>@leave.StartDate?.ToString("d/M/yyyy") - @leave.EndDate?.ToString("d/M/yyyy")</td>
                     <td>@leave.Days</td>
                     <td>
                         @if (leave.Status == StatusOptions.Approved.ToString())
@@ -42,6 +43,10 @@
                         {
                             <button class="btn btn-sm btn-warning">Pending</button>
                         }
+                    </td>
+                    <td>
+                        <a asp-controller="Leave" asp-action="Edit" asp-route-leaveID="@leave.LeaveID">Edit</a>
+                        <a asp-controller="Leave" asp-action="Delete" asp-route-leaveID="@leave.LeaveID">Delete</a>
                     </td>
                 </tr>
             }
