@@ -28,7 +28,6 @@ namespace LeaveManagementSystem.UI.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-
             return View();
         }
 
@@ -160,6 +159,14 @@ namespace LeaveManagementSystem.UI.Controllers
             {
                 return Json(false); //Email already exist in database
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Profile()
+        {
+            ApplicationUser user = await _userManager.GetUserAsync(User);
+
+            return View(user);
         }
     }
 }

@@ -38,5 +38,13 @@ namespace LeaveManagementSystem.Core.Services
 
             return leave.ToLeaveResponse();
         }
+
+        public async Task<List<LeaveResponse>> GetLeaveByUserID(Guid? userID)
+        {
+            var leaves = await _leavesRepository.GetLeaveByUserID(userID.Value);
+
+            return leaves
+                .Select(temp => temp.ToLeaveResponse()).ToList();
+        }
     }
 }

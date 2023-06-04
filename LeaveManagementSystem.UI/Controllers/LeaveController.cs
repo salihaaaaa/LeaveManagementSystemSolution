@@ -36,13 +36,18 @@ namespace LeaveManagementSystem.UI.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var leaves = await _leavesGetterService.GetAllLeaves();
+            ApplicationUser currentUser = await _userManager.GetUserAsync(User);
+
+            List<LeaveResponse> leaves = await _leavesGetterService.GetLeaveByUserID(currentUser.Id);
             return View(leaves);
         }
 
         [HttpGet]
         public async Task<IActionResult> Add()
         {
+            ApplicationUser currentUser = await _userManager.GetUserAsync(User);
+            ViewBag.User = currentUser.Id;
+
             List<LeaveTypeResponse> leaveTypes = await _leaveTypesGetterService.GetAllLeaveTypes();
 
             ViewBag.LeaveTypes = leaveTypes.Select(temp =>
@@ -74,6 +79,9 @@ namespace LeaveManagementSystem.UI.Controllers
                 .SelectMany(e => e.ErrorMessage);
                 return View();
             }
+
+            ApplicationUser currentUser = await _userManager.GetUserAsync(User);
+            ViewBag.User = currentUser.Name;
 
             LeaveResponse leaveResponse = await _leavesAdderService.AddLeave(leaveAddRequest);
             return RedirectToAction(nameof(LeaveController.Index), "Leave");

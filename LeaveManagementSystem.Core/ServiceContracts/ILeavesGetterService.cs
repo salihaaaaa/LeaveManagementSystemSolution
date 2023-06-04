@@ -8,5 +8,7 @@ namespace LeaveManagementSystem.Core.ServiceContracts
         Task<List<LeaveResponse>> GetAllLeaves();
 
         Task<LeaveResponse?> GetLeaveByLeaveID(Guid? leaveID);
+
+        Task<List<LeaveResponse>> GetLeaveByUserID(Guid? userID);
     }
 }

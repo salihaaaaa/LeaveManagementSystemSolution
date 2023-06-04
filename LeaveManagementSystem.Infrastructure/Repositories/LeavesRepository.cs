@@ -50,6 +50,14 @@ namespace LeaveManagementSystem.Infrastructure.Repositories
                 .FirstOrDefaultAsync(temp => temp.LeaveID == leaveID);
         }
 
+        public async Task<List<Leave>> GetLeaveByUserID(Guid userID)
+        {
+            return await _db.Leaves
+                .Include("LeaveType")
+                .Where(temp => temp.UserID == userID)
+                .ToListAsync();
+        }
+
         public async Task<Leave> UpdateLeave(Leave leave)
         {
             Leave matchingLeaves = await _db.Leaves.FirstAsync(temp => temp.LeaveID == leave.LeaveID);

@@ -10,6 +10,8 @@ namespace LeaveManagementSystem.Core.Domain.RepositoryContracts
 
         Task<Leave?> GetLeaveByLeaveID(Guid leaveID);
 
+        Task<List<Leave>> GetLeaveByUserID(Guid userID);
+
         Task<Leave> UpdateLeave(Leave leave);
 
         Task<bool> DeleteLeave(Guid leaveID);

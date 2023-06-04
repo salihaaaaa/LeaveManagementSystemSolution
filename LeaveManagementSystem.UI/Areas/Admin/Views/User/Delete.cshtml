@@ -1,0 +1,35 @@
+﻿@model ApplicationUser
+
+@{
+    ViewBag.Title = "Delete User";
+    ViewBag.CurrentUrl = "~Admin/User/Delete";
+}
+
+<div class="container w-75">
+
+    <h4 class="pt-3">Delete User</h4>
+    <h5 class="pt-3">Are you sure to delete?</h5>
+    <hr />
+
+    <form asp-controller="User" asp-action="Delete" asp-area="Admin" asp-route-ReturnUrl="@Context.Request.Query["ReturnUrl"]" method="post">
+
+        <input type="hidden" asp-for="Id" />
+
+        @*Name*@
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Name</label>
+            <input asp-for="Name" class="form-control" disabled>
+        </div>
+
+        @*Email*@
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input asp-for="Email" class="form-control" disabled>
+        </div>
+
+        @*Delete button*@
+        <button type="submit" class="btn btn-danger mt-2">Delete</button>
+
+    </form>
+</div>
+
