@@ -6,9 +6,9 @@ namespace LeaveManagementSystem.Core.Services
 {
     public class LeavesDeleterService : ILeavesDeleterService
     {
-        private readonly ILeavesRepository _leavesRepository;
+        private readonly ILeaveRepository _leavesRepository;
 
-        public LeavesDeleterService(ILeavesRepository leavesRepository)
+        public LeavesDeleterService(ILeaveRepository leavesRepository)
         {
             _leavesRepository = leavesRepository;
         }

@@ -2,7 +2,7 @@
 
 namespace LeaveManagementSystem.Core.Domain.RepositoryContracts
 {
-    public interface ILeavesRepository
+    public interface ILeaveRepository
     {
         Task<Leave> AddLeave(Leave leave);
 

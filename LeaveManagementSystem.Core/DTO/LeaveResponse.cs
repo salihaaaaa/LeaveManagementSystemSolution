@@ -16,6 +16,11 @@ namespace LeaveManagementSystem.Core.DTO
         public string? Status { get; set; }
         public double? Days { get; set; }
 
+        public override string ToString()
+        {
+            return $"Leave ID: {LeaveID}, User ID: {UserID}, Name: {Name}, Leave Type ID: {LeaveTypeID}, Leave Type: {LeaveType}, Start Date: {StartDate}, End Date: {EndDate}, Reason: {Reason}, Status: {Status}";
+        }
+
         public LeaveUpdateRequest ToLeaveUpdateRequest()
         {
             return new LeaveUpdateRequest()

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LeaveManagementSystem.Infrastructure.Repositories
 {
-    public class LeavesRepository : ILeavesRepository
+    public class LeavesRepository : ILeaveRepository
     {
         private readonly ApplicationDbContext _db;
 

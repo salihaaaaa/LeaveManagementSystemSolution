@@ -15,7 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<ILeaveTypesRepository, LeaveTypesRepository>();
-builder.Services.AddScoped<ILeavesRepository, LeavesRepository>();
+builder.Services.AddScoped<ILeaveRepository, LeavesRepository>();
 
 builder.Services.AddScoped<ILeaveTypesAdderService, LeaveTypesAdderService>();
 builder.Services.AddScoped<ILeaveTypesGetterService, LeaveTypesGetterService>();
