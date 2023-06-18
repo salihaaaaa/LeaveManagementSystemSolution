@@ -92,7 +92,7 @@ namespace LeaveManagementSystem.UI.Areas.Admin.Controllers
                 ViewBag.Errors = ModelState.Values
                     .SelectMany(v => v.Errors)
                 .SelectMany(e => e.ErrorMessage);
-                return View();
+                return View(leaveAddRequest);
             }
 
             LeaveResponse leaveResponse = await _leavesAdderService.AddLeave(leaveAddRequest);
